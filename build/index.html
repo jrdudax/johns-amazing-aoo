@@ -1,3 +1,40 @@
-<h1><center>Hello World!</center></h1>
-<p>
-<center><img src="1988 (7).jpg"></center>
+<input type=file onchange=doit(this.files[0])>
+<audio ></audio>
+<div id=pspace>k</pspace>
+
+<script>
+      audio=document.getElementsByTagName("audio")[0]  
+
+  function doit(f){
+      url=URL.createObjectURL(f)
+      console.log(url)
+       audio.src=url
+       audio.play()   
+       document.getElementsByTagName("input")[0].outerHTML=''
+  } // function doit()
+
+pspace=document.getElementById("pspace")
+x=0
+
+document.ontouchstart=function(e){
+ e.preventDefault();
+
+ 
+ if (audio.paused) {audio.currentTime-=5;audio.play()}
+else audio.pause()
+
+  pspace.innerHTML="s touches.length:" +e.touches.length+":"+(x++)+"<hr>"+pspace.innerHTML
+} // touchstart
+
+/*
+document.ontouchmove=function(e){
+ e.preventDefault();
+
+  pspace.innerHTML="m1 touches.length:" +e.touches.length+":"+(x++)+"<hr>"+pspace.innerHTML
+
+ audio.currentTime-=5
+ audio.play()
+
+} // touchmove
+*/
+</script>

@@ -13,9 +13,7 @@
        audio.src=url
        audio.play()   
        document.getElementsByTagName("input")[0].outerHTML=''
-  } // function doit()
-
-pspace=document.getElementById("pspace")
+       pspace=document.getElementById("pspace")
 x=0
 
 document.ontouchstart=function(e){
@@ -27,6 +25,9 @@ else audio.pause()
 
   pspace.innerHTML="<hr> touches.length:" +e.touches.length+":"+(x++)+"<hr>"
 } // touchstart
+ 
+  } // function doit()
+
 
 /*
 document.ontouchmove=function(e){

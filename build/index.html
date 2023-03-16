@@ -21,6 +21,9 @@ function setTouchListeners() {
 //------------------------------------------- 
   document.ontouchstart=function(e){
    e.preventDefault();
+   if (audio.paused) paused=true
+     else paused=false
+   audio.pause()    
    start=new Date().getTime()/1000
   } // touchstart
 //------------------------------------------- 
@@ -28,7 +31,9 @@ function setTouchListeners() {
      e.preventDefault()
      var end=new Date().getTime()/1000
      var dif=end-start
-     pspace.innerHTML=(x++)+". Diff: "+((Math.floor(100*dif))/100)+"<hr>"+pspace.innerHTML
+     dif=(Math.floor(100*dif))/100
+     
+     pspace.innerHTML=(x++)+". Diff: "+dif+"<hr>"+pspace.innerHTML
   } // touchend
 //------------------------------------------- 
 } // function setTouchListners()       

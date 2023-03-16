@@ -13,6 +13,12 @@ function doit(f) {
   audio.src=url
   audio.play()   
   document.getElementsByTagName("input")[0].outerHTML=''
+  lastTouchTime=0
+  audio.ontimeupdate=function(){
+    var time=new Date().getTime()/1000
+    if ((time-lastTouchTime)>60)
+      audio.pause()
+  } // audio.ontimeupdate
   setTouchListeners()
 } // function doit()
 //------------------------------------------- 
@@ -20,6 +26,7 @@ function setTouchListeners() {
   x=0
 //------------------------------------------- 
   document.ontouchstart=function(e){
+    lastTouchTime=new Date().getTime()/1000
    e.preventDefault();
    if (audio.paused) paused=true
      else paused=false

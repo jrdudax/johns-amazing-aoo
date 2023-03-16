@@ -70,8 +70,8 @@ document.ontouchmove=function(e) {
     touchYcnt=touch.clientY
     
     if (touchXcnt>touchX) {
-      if ((audio.currentTime+10)>(audio.duration-1)) audio.currentTime+=10
-      else audio.currentTime=audio.duration-1
+      if ((audio.currentTime+10)<(audio.duration-1)) audio.currentTime+=10
+      else audio.currentTime=audio.duration-.5
                           
                           }
       else if (touchXcnt<touchX) audio.currenTime-=10

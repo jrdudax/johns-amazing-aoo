@@ -71,13 +71,13 @@ document.ontouchmove=function(e) {
     
     touchXcnt=touch.clientX
     touchYcnt=touch.clientY
-    
+    skiptime=30
     if (touchXcnt>touchX) {
-      if ((audio.currentTime+10)<(audio.duration-1)) audio.currentTime+=10
+      if ((audio.currentTime+skiptime)<(audio.duration-1)) audio.currentTime+=skiptime
       else audio.currentTime=audio.duration-.5
                           
                           }
-      else if (touchXcnt<touchX) audio.currenTime-=10
+      else if (touchXcnt<touchX) audio.currenTime-=skiptime
     audio.play()
     
      pspace.innerHTML="moving, good touch: "+touch.identifier+"<hr>"//+pspace.innerHTML

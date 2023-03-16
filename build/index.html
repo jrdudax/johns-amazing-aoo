@@ -37,14 +37,12 @@ document.ontouchend=function(e){
 e.preventDefault()
       end=new Date().getTime()/1000
       dif=end-start
-      if (dif<.2)
-          {if (audio.paused) {
-                      audio.currentTime-=5;audio.play()
-                   } // if paused
-else audio.pause()}
-else { // if dif>.2
-  audio.currentTime-=5
-  audio.play()
+      if (dif<.1) // if it is short
+          {if (audio.paused) 
+                      audio.play()                   
+          else audio.pause()}
+else { // if it is long
+    audio.currentTime-=5;audio.play()
 }
   pspace.innerHTML=(x++)+". Diff: "+((Math.floor(100*dif))/100)+" : C.T. - "+audio.currentTime+"<hr>"+pspace.innerHTML
 

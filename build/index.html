@@ -28,6 +28,10 @@ function setTouchListeners() {
   document.ontouchstart=function(e){
     lastTouchTime=new Date().getTime()/1000
    e.preventDefault();
+    touchId=e.touches[0]
+    touchX=touchId.clientX
+    touchY=touchId.clientY
+    pspace.innerHTML=touchX+":"+touchY+"<hr>"+pspace.innerHTML
    if (audio.paused) paused=true
      else paused=false
    audio.pause()    

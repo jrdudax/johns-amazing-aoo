@@ -6,12 +6,21 @@
 
 <script>
       audio=document.getElementsByTagName("audio")[0]  
-
+lastpause=0
+      
   function doit(f){
       url=URL.createObjectURL(f)
       console.log(url)
        audio.src=url
        audio.play()   
+       audio.onended=function(){
+             this.currentTime=0; this.play()
+         } // onended
+        audio.ontimeupdate=function(){
+          var time=new Date().getTime()/1000
+          if ((time-lastpause) > 1800) audio.pause()
+        } // ontimeupdate
+
        document.getElementsByTagName("input")[0].outerHTML=''
        pspace=document.getElementById("pspace")
 x=0
@@ -20,7 +29,9 @@ document.ontouchstart=function(e){
  e.preventDefault();
 
  
- if (audio.paused) {audio.currentTime-=5;audio.play()}
+ if (audio.paused) {lastpause=new Date().getTime()/1000;
+                      audio.currentTime-=5;audio.play()
+                   } // if paused
 else audio.pause()
 
   pspace.innerHTML="<hr> touches.length:" +e.touches.length+":"+(x++)+"<hr>"

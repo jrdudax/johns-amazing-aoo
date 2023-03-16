@@ -33,15 +33,16 @@ document.ontouchstart=function(e){
 } // touchstart
  
 document.ontouchend=function(e){
+      lastpause=new Date().getTime()/1000;
 e.preventDefault()
       end=new Date().getTime()/1000
       dif=end-start
-      if (dif<.1)
-          {if (audio.paused) {lastpause=new Date().getTime()/1000;
+      if (dif<.2)
+          {if (audio.paused) {
                       audio.currentTime-=5;audio.play()
                    } // if paused
 else audio.pause()}
-else { // if dif>.1
+else { // if dif>.2
   audio.currentTime-=5
   audio.play()
 }

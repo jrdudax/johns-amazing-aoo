@@ -34,7 +34,11 @@ function setTouchListeners() {
      dif=(Math.floor(100*dif))/100
      var longTouch=false
      if (dif>.3) longTouch=true
-    
+     if (longTouch) {audio.currentTime-=5; audio.play()}
+       else {
+          if (paused) {audio.currentTime-=.5; audio.play()}
+            else audio.pause()
+       } //else    
      pspace.innerHTML=(x++)+" : "+longTouch+"<hr>"+pspace.innerHTML
   } // touchend
 //------------------------------------------- 

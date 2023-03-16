@@ -28,15 +28,27 @@ x=0
 document.ontouchstart=function(e){
  e.preventDefault();
 
- 
- if (audio.paused) {lastpause=new Date().getTime()/1000;
-                      audio.currentTime-=5;audio.play()
-                   } // if paused
-else audio.pause()
-
-  pspace.innerHTML="<hr> touches.length:" +e.touches.length+":"+(x++)+"<hr>"
+ start=new Date().getTime()/1000
 } // touchstart
  
+document.ontouchend=function(e){
+e.preventDefault()
+      end=new Date().getTime()/1000
+      dif=end-start
+      if (dif<.1>
+          {if (audio.paused) {lastpause=new Date().getTime()/1000;
+                      audio.currentTime-=5;audio.play()
+                   } // if paused
+else audio.pause()}
+else { // if dif>.1
+  audio.currentTime-=5
+  audio.play()
+}
+  pspace.innerHTML="<hr>" +dif+" : "+(x++)+"<hr>"
+
+} // touchend
+        
+        
   } // function doit()
 
 

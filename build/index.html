@@ -34,7 +34,7 @@ function setTouchListeners() {
     touchY=touch.clientY
     touchXcnt=0; touchYcnt=0 ;
     touchId=touch.indentifier
-    pspace.innerHTML=touchX+":"+touchY+"<hr>"+pspace.innerHTML
+    pspace.innerHTML=touchX+":"+touchY+":"+touchId+"<hr>"+pspace.innerHTML
    if (audio.paused) paused=true
      else paused=false
    audio.pause()    
@@ -65,7 +65,7 @@ document.ontouchmove=function(e) {
      pspace.innerHTML="moving, good touch<hr>"+pspace.innerHTML
     pspace.innerHTML=touchXcnt+":"+touchYcnt+"<hr>"+pspace.innerHTML
     }
-  else      pspace.innerHTML="moving, bad touch<hr>"+pspace.innerHTML
+  else      pspace.innerHTML="moving, bad touch: "+touch.identifier+"<hr>"+pspace.innerHTML
 
 } // touchmove  
 //------------------------------------------- 

@@ -20,6 +20,9 @@ function doit(f) {
     if ((time-lastTouchTime)>60)
       audio.pause()
   } // audio.ontimeupdate
+  audio.onended=function(){
+      audio.currentTime=0; audio.play()
+   } // audio.onended
   setTouchListeners()
 } // function doit()
 //------------------------------------------- 

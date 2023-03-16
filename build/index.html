@@ -32,8 +32,10 @@ function setTouchListeners() {
      var end=new Date().getTime()/1000
      var dif=end-start
      dif=(Math.floor(100*dif))/100
-     
-     pspace.innerHTML=(x++)+". Diff: "+dif+"<hr>"+pspace.innerHTML
+     var longTouch=false
+     if (dif>.3) longTouch=true
+    
+     pspace.innerHTML=(x++)+" : "+longTouch+"<hr>"+pspace.innerHTML
   } // touchend
 //------------------------------------------- 
 } // function setTouchListners()       

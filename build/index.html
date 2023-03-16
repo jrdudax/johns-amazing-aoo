@@ -34,7 +34,7 @@ function setTouchListeners() {
     touchY=touch.clientY
     touchXcnt=0; touchYcnt=0 ;
     touchId=touch.identifier
-    pspace.innerHTML=touchX+":"+touchY+":"+touchId+"<hr>"+pspace.innerHTML
+    pspace.innerHTML=touchX+":"+touchY+":"+touchId+"<hr>"//+pspace.innerHTML
    if (audio.paused) paused=true
      else paused=false
    audio.pause()    
@@ -54,7 +54,7 @@ function setTouchListeners() {
           if (paused) {audio.currentTime-=.5; audio.play()}
             else audio.pause()
        } //else    
-     pspace.innerHTML=(x++)+" : "+longTouch+" : "+audio.currentTime+"<hr>"+pspace.innerHTML
+     pspace.innerHTML=(x++)+" : "+longTouch+" : "+audio.currentTime+"<hr>"//+pspace.innerHTML
     } // if touchXcnt==0
     else { // touchXcnt!=0
        if (touchXcnt>touchX) audio.currentTime+=10
@@ -69,10 +69,10 @@ document.ontouchmove=function(e) {
   if (touch.identifier==touchId){
     touchXcnt=touch.clientX
     touchYcnt=touch.clientY
-     pspace.innerHTML="moving, good touch<hr>"+pspace.innerHTML
-    pspace.innerHTML=touchXcnt+":"+touchYcnt+"<hr>"+pspace.innerHTML
+     pspace.innerHTML="moving, good touch<hr>"//+pspace.innerHTML
+    pspace.innerHTML=touchXcnt+":"+touchYcnt+"<hr>"//+pspace.innerHTML
     }
-  else      pspace.innerHTML="moving, bad touch: "+touch.identifier+"<hr>"+pspace.innerHTML
+  else      pspace.innerHTML="moving, bad touch: "+touch.identifier+"<hr>"//+pspace.innerHTML
 
 } // touchmove  
 //------------------------------------------- 

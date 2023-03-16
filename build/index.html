@@ -42,7 +42,7 @@ function setTouchListeners() {
   } // touchstart
 //------------------------------------------- 
   document.ontouchend=function(e) {
-    if (touchXcnt==0){
+   
      e.preventDefault()
      var end=new Date().getTime()/1000
      var dif=end-start
@@ -56,11 +56,7 @@ function setTouchListeners() {
        } //else    
      pspace.innerHTML=(x++)+" : "+longTouch+" : "+audio.currentTime+"<hr>"//+pspace.innerHTML
     } // if touchXcnt==0
-    else { // touchXcnt!=0
-       if (touchXcnt>touchX) audio.currentTime+=10
-       else if (touchXcnt<touchX) audio.currenTime-=10
-      audio.play()
-    } //else touchXcnt!=0
+    
   } // touchend
 //------------------------------------------- 
 document.ontouchmove=function(e) {
@@ -69,11 +65,16 @@ document.ontouchmove=function(e) {
   if (touch.identifier==touchId){
     touchXcnt=touch.clientX
     touchYcnt=touch.clientY
-     pspace.innerHTML="moving, good touch<hr>"//+pspace.innerHTML
-    pspace.innerHTML=touchXcnt+":"+touchYcnt+"<hr>"//+pspace.innerHTML
+    
+    if (touchXcnt>touchX) audio.currentTime+=10
+      else if (touchXcnt<touchX) audio.currenTime-=10
+    audio.play()
+    
+     pspace.innerHTML="moving, good touch: "+touch.identifier+"<hr>"//+pspace.innerHTML
+    
     }
-  else      pspace.innerHTML="moving, bad touch: "+touch.identifier+"<hr>"//+pspace.innerHTML
-
+  else      pspace.innerHTML="moving, bad touch: "+touch.identifier+"<hr>"//+pspace.innerHTM
+  
 } // touchmove  
 //------------------------------------------- 
 } // function setTouchListners()       

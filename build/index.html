@@ -69,7 +69,11 @@ document.ontouchmove=function(e) {
     touchXcnt=touch.clientX
     touchYcnt=touch.clientY
     
-    if (touchXcnt>touchX) audio.currentTime+=10
+    if (touchXcnt>touchX) {
+      if ((audio.currentTime+10)>(audio.duration-1)) audio.currentTime+=10
+      else audio.currentTime=audio.duration-1
+                          
+                          }
       else if (touchXcnt<touchX) audio.currenTime-=10
     audio.play()
     

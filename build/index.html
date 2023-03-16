@@ -39,7 +39,7 @@ function setTouchListeners() {
           if (paused) {audio.currentTime-=.5; audio.play()}
             else audio.pause()
        } //else    
-     pspace.innerHTML=(x++)+" : "+longTouch+"<hr>"+pspace.innerHTML
+     pspace.innerHTML=(x++)+" : "+longTouch+" : "+audio.currentTime+"<hr>"+pspace.innerHTML
   } // touchend
 //------------------------------------------- 
 } // function setTouchListners()       

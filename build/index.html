@@ -56,7 +56,8 @@ function setTouchListeners() {
      pspace.innerHTML=(x++)+" : "+longTouch+" : "+audio.currentTime+"<hr>"+pspace.innerHTML
   } // touchend
 //------------------------------------------- 
-document.touchmove=function(e) {
+document.ontouchmove=function(e) {
+  e.preventDefault()
   var touch=e.touches[0]
   if (touch.identifier==touchId){
     touchXcnt=touch.clientX

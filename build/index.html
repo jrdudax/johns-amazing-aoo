@@ -44,7 +44,7 @@ else { // if dif>.1
   audio.currentTime-=5
   audio.play()
 }
-  pspace.innerHTML="<hr>" +dif+" : "+audio.currentTime+" : "+(x++)+"<hr>"
+  pspace.innerHTML=((Math.floor(100*dif))/100)+" : "+audio.currentTime+" : "+(x++)+"<hr>"+pspace.innerHTML
 
 } // touchend
         

@@ -42,6 +42,7 @@ function setTouchListeners() {
   } // touchstart
 //------------------------------------------- 
   document.ontouchend=function(e) {
+    if (touchXcnt==0){
      e.preventDefault()
      var end=new Date().getTime()/1000
      var dif=end-start
@@ -54,6 +55,12 @@ function setTouchListeners() {
             else audio.pause()
        } //else    
      pspace.innerHTML=(x++)+" : "+longTouch+" : "+audio.currentTime+"<hr>"+pspace.innerHTML
+    } // if touchXcnt==0
+    else { // touchXcnt!=0
+       if (touchXcnt>touchX) audio.currentTime+=10
+       else if (touchXcnt<touchX) audio.currenTime-=10
+      audio.play()
+    } //else touchXcnt!=0
   } // touchend
 //------------------------------------------- 
 document.ontouchmove=function(e) {

@@ -27,10 +27,12 @@ function setTouchListeners() {
 //------------------------------------------- 
   document.ontouchstart=function(e){
     lastTouchTime=new Date().getTime()/1000
-   e.preventDefault();
-    touchId=e.touches[0]
-    touchX=touchId.clientX
-    touchY=touchId.clientY
+    e.preventDefault();
+    var touch=e.touches[0]
+    touchX=touch.clientX
+    touchY=touch.clientY
+    touchXcnt=0; touchYcnt=0 ;
+    touchId=touch.indentifier
     pspace.innerHTML=touchX+":"+touchY+"<hr>"+pspace.innerHTML
    if (audio.paused) paused=true
      else paused=false
@@ -52,6 +54,18 @@ function setTouchListeners() {
        } //else    
      pspace.innerHTML=(x++)+" : "+longTouch+" : "+audio.currentTime+"<hr>"+pspace.innerHTML
   } // touchend
+//------------------------------------------- 
+document.touchmove=function(e) {
+  var touch=e.touches[0]
+  if (touch.identifier==touchId){
+    touchXcnt=touch.clientX
+    touchYcnt=touch.clientY
+     pspace.innerHTML="moving, good touch<hr>"+pspace.innerHTML
+    pspace.innerHTML=touchXcnt+":"+touchYcnt+"<hr>"+pspace.innerHTML
+    }
+  else      pspace.innerHTML="moving, bad touch<hr>"+pspace.innerHTML
+
+} // touchmove  
 //------------------------------------------- 
 } // function setTouchListners()       
 //------------------------------------------- 

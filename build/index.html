@@ -3,53 +3,34 @@
 
 <input type=file onchange=doit(this.files[0])>
 <audio ></audio>
-<div id=pspace>kkkk</pspace>
+<div id=pspace>n</pspace>
 
 <script>
-      audio=document.getElementsByTagName("audio")[0]  
-lastpause=0
-      
-  function doit(f){
-      url=URL.createObjectURL(f)
-      console.log(url)
-       audio.src=url
-       audio.play()   
-       audio.onended=function(){
-             this.currentTime=0; this.play()
-         } // onended
-        audio.ontimeupdate=function(){
-          var time=new Date().getTime()/1000
-          if ((time-lastpause) > 1800) audio.pause()
-        } // ontimeupdate
-
-       document.getElementsByTagName("input")[0].outerHTML=''
-       pspace=document.getElementById("pspace")
-x=0
-
-document.ontouchstart=function(e){
- e.preventDefault();
-
- start=new Date().getTime()/1000
-} // touchstart
- 
-document.ontouchend=function(e){
-      lastpause=new Date().getTime()/1000;
-e.preventDefault()
-      end=new Date().getTime()/1000
-      dif=end-start
-      if (dif<.1) // if it is short
-          {if (audio.paused) 
-                      audio.play()                   
-          else audio.pause()}
-else { // if it is long
-    audio.currentTime-=5;audio.play()
-}
-  pspace.innerHTML=(x++)+". Diff: "+((Math.floor(100*dif))/100)+" : C.T. - "+audio.currentTime+"<hr>"+pspace.innerHTML
-
-} // touchend
-        
-        
-  } // function doit()
-
-
+//------------------------------------------- 
+function doit(f) {
+  var url=URL.createObjectURL(f)
+  audio=document.getElementsByTagName("audio")[0]  
+  audio.src=url
+  audio.play()   
+  document.getElementsByTagName("input")[0].outerHTML=''
+  setTouchListeners()
+} // function doit()
+//------------------------------------------- 
+function setTouchListeners() {
+  x=0
+//------------------------------------------- 
+  document.ontouchstart=function(e){
+   e.preventDefault();
+   start=new Date().getTime()/1000
+  } // touchstart
+//------------------------------------------- 
+  document.ontouchend=function(e) {
+     e.preventDefault()
+     var end=new Date().getTime()/1000
+     var dif=end-start
+     pspace.innerHTML=(x++)+". Diff: "+((Math.floor(100*dif))/100)+"<hr>"+pspace.innerHTML
+  } // touchend
+//------------------------------------------- 
+} // function setTouchListners()       
+//------------------------------------------- 
 </script>

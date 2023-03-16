@@ -17,7 +17,7 @@ function doit(f) {
   lastTouchTime=0
   audio.ontimeupdate=function(){
     var time=new Date().getTime()/1000
-    if ((time-lastTouchTime)>60)
+    if ((time-lastTouchTime)>1800) // sleep timer
       audio.pause()
   } // audio.ontimeupdate
   audio.onended=function(){
@@ -37,7 +37,7 @@ function setTouchListeners() {
     touchY=touch.clientY
     moved=false
     touchId=touch.identifier
-    pspace.innerHTML=touchX+":"+touchY+":"+touchId+"<hr>"//+pspace.innerHTML
+   // pspace.innerHTML=touchX+":"+touchY+":"+touchId+"<hr>"//+pspace.innerHTML
    if (audio.paused) paused=true
      else paused=false
    audio.pause()    
@@ -57,11 +57,12 @@ function setTouchListeners() {
           if (paused) {audio.currentTime-=.5; audio.play()}
             else audio.pause()
        } //else    
-     pspace.innerHTML=(x++)+" : "+longTouch+" : "+audio.currentTime+"<hr>"//+pspace.innerHTML
+    // pspace.innerHTML=(x++)+" : "+longTouch+" : "+audio.currentTime+"<hr>"//+pspace.innerHTML
  
     
   } // touchend
 //------------------------------------------- 
+/*
 document.ontouchmove=function(e) {
   e.preventDefault()
   var touch=e.touches[0]
@@ -86,6 +87,7 @@ document.ontouchmove=function(e) {
   else      pspace.innerHTML="moving, bad touch: "+touch.identifier+"<hr>"//+pspace.innerHTM
   
 } // touchmove  
+*/
 //------------------------------------------- 
 } // function setTouchListners()       
 //------------------------------------------- 

@@ -35,7 +35,7 @@ function setTouchListeners() {
     var touch=e.touches[0]
     touchX=touch.clientX
     touchY=touch.clientY
-    touchXcnt=0; touchYcnt=0 ;
+    moved=false
     touchId=touch.identifier
     pspace.innerHTML=touchX+":"+touchY+":"+touchId+"<hr>"//+pspace.innerHTML
    if (audio.paused) paused=true
@@ -66,6 +66,9 @@ document.ontouchmove=function(e) {
   e.preventDefault()
   var touch=e.touches[0]
   if (touch.identifier==touchId){
+    if (moved) return
+    moved=true
+    
     touchXcnt=touch.clientX
     touchYcnt=touch.clientY
     

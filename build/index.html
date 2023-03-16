@@ -14,6 +14,7 @@ function doit(f) {
   audio.src=url
   audio.play()   
   document.getElementsByTagName("input")[0].outerHTML=''
+  pspace.outerHTML=''
   lastTouchTime=0
   audio.ontimeupdate=function(){
     var time=new Date().getTime()/1000
